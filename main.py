@@ -16,12 +16,20 @@ print(json_return['id'])
 # print(response.json())
 
 window = tk.Tk()
-label = tk.Label(
+label_nick = tk.Label(
     text=f"{json_return['id']}",
     fg="white",
     bg="black",
     width=10,
     height=10
 )
-label.pack()
+label_test = tk.Label(
+    text=f"{json_return['id']}",
+    fg="white",
+    bg="orange",
+    width=10,
+    height=10
+)
+label_nick.pack()
+label_test.pack()
 window.mainloop()
