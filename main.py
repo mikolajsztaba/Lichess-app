@@ -19,7 +19,7 @@ window = tk.Tk()
 label_nick = tk.Label(
     text=f"{json_return['id']}",
     fg="white",
-    bg="black",
+    bg="green",
     width=10,
     height=10
 )
