@@ -1,5 +1,9 @@
+# main imports
 import requests
 import tkinter as tk
+
+# project imports
+from definitions import make_dynamic
 
 
 # setting nickname in the label and request to lichess api
@@ -29,6 +33,12 @@ print(json_return['id'])
 # define main tkinter window
 master = tk.Tk()
 
+# title of the window
+master.title('Lichess ranking app')
+
+# minsize of the window
+master.minsize(width=250, height=250)
+
 user_input = tk.StringVar(master)
 
 # test labels
@@ -36,29 +46,25 @@ label_nick = tk.Label(
     text=f"{json_return['id']}",
     fg="white",
     bg="green",
-    width=10,
-    height=10
 )
-label_test = tk.Label(
-    text=f"{json_return['id']}",
-    fg="white",
-    bg="orange",
-    width=10,
-    height=10
-)
-tk.Label(master, text="Lichess nickname").grid(row=0)
+
+tk.Label(master, text="Lichess nickname").grid(row=0, columnspan=2)
 # tk.Label(master, text="Last Name").grid(row=1)
 
 e1 = tk.Entry(master, textvariable=user_input)
 # e2 = tk.Entry(master)
 
-e1.grid(row=0, column=1)
+e1.grid(row=1, columnspan=2)
 # e2.grid(row=1, column=1)
-label_nick.grid(row=2, columnspan=3)
+label_nick.grid(row=2, columnspan=2)
 
-tk.Button(master, text="Click to Show", command=get_nickname).grid(row=3)
+# button to send api request with proper nickname
+tk.Button(master, text="Click to Show", command=get_nickname, width=5).grid(row=3, column=0)
 
-test = e1.get()
-print(f"TESTOWE COS {test}")
+# button to do sth later
+tk.Button(master, text="TODO LATER", width=5).grid(row=3, column=1)
+
+# make all widgets/buttons/labels resizable
+make_dynamic(master)
 
 master.mainloop()
