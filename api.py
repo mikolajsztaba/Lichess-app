@@ -14,6 +14,11 @@ def gather_rating(api_response, type_rating):
 # format data to be sent by sms
 def format_data(rating_type, json_info):
     rating_text = ''
+
+    # add greeting for user
+    rating_text += f"Hello {json_info['username']}!\n"
+
+    # parsing json into strings to put them in a message
     if rating_type == 'all':
         for type in json_info['perfs']:
             try:
@@ -27,6 +32,8 @@ def format_data(rating_type, json_info):
                 rating_text += f"{type.title()} rating: {json_info['perfs'][type]['rating']}, progress: {json_info['perfs'][type]['prog']}.\n"
             except:
                 print(f'Wrong name of type. {type.title()} does not exist in your lichess account.')
+
         print("Printujemy tylko kilka")
+
         # print test sms message
         print(rating_text)
