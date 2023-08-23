@@ -6,9 +6,9 @@ from email.mime.text import MIMEText
 
 # Email configuration
 sender_email = "lichessapp123@gmail.com"
-receiver_email = os.environ.get("RECEIVER_EMAIL")
+receiver_email = os.getenv("RECEIVER_EMAIL")
 print(receiver_email)
-print(os.environ.get("LICHESS_PASSWORD"))
+print(os.getenv("LICHESS_PASSWORD"))
 subject = "Subject of your email"
 message = "Body of your email."
 
